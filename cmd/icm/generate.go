@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/meyermarcel/icm/configs"
-	"github.com/meyermarcel/icm/cont"
-	"github.com/meyermarcel/icm/data"
+	"github.com/mrclmr/icm/configs"
+	"github.com/mrclmr/icm/cont"
+	"github.com/mrclmr/icm/data"
 
 	"github.com/spf13/cobra"
 )

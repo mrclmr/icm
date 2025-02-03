@@ -3,7 +3,7 @@ package data
 import (
 	"io"
 
-	"github.com/meyermarcel/icm/cont"
+	"github.com/mrclmr/icm/cont"
 )
 
 // OwnerDecoder decodes a code to an owner or generates a random owner.

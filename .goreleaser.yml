@@ -50,11 +50,11 @@ archives:
 brews:
   -
     repository:
-      owner: meyermarcel
+      owner: mrclmr
       name: homebrew-tap
     directory: Formula
     description: "Generate or validate intermodal container markings."
-    homepage: "https://github.com/meyermarcel/icm"
+    homepage: "https://github.com/mrclmr/icm"
     install: |
       bin.install "icm"
 
@@ -79,8 +79,8 @@ brews:
 scoops:
   -
     repository:
-      owner: meyermarcel
+      owner: mrclmr
       name: scoop-bucket
-    homepage: "https://github.com/meyermarcel/icm"
+    homepage: "https://github.com/mrclmr/icm"
     description: "Generate or validate intermodal container markings."
     license: MIT

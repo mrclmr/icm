@@ -1,6 +1,6 @@
 package main
 
-import cmd "github.com/meyermarcel/icm/cmd/icm"
+import cmd "github.com/mrclmr/icm/cmd/icm"
 
 var version = "dev"
 

@@ -1,4 +1,4 @@
-[![build](https://github.com/meyermarcel/icm/actions/workflows/build.yml/badge.svg)](https://github.com/meyermarcel/icm/actions/workflows/build.yml)  [![Go Report Card](https://goreportcard.com/badge/github.com/meyermarcel/icm)](https://goreportcard.com/report/github.com/meyermarcel/icm)
+[![build](https://github.com/mrclmr/icm/actions/workflows/build.yml/badge.svg)](https://github.com/mrclmr/icm/actions/workflows/build.yml)  [![Go Report Card](https://goreportcard.com/badge/github.com/mrclmr/icm)](https://goreportcard.com/report/github.com/mrclmr/icm)
 
 # icm (intermodal container markings)
 
@@ -15,25 +15,25 @@ See examples for [`generate` command](docs/icm_generate.md#examples) and [`valid
 ### macOS with [Homebrew](https://brew.sh)
 
 ```
-brew install meyermarcel/tap/icm
+brew install mrclmr/tap/icm
 ```
 
 ### Linux with [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux)
 
 ```
-brew install meyermarcel/tap/icm
+brew install mrclmr/tap/icm
 ```
 
 ### Windows with [Scoop](https://scoop.sh)
 
 ```
-scoop bucket add meyermarcel-bucket https://github.com/meyermarcel/scoop-bucket.git
+scoop bucket add mrclmr-bucket https://github.com/mrclmr/scoop-bucket.git
 scoop install icm
 ```
 
 ### Manual
 
-Download your binary in the [Releases](https://github.com/meyermarcel/icm/releases) section.
+Download your binary in the [Releases](https://github.com/mrclmr/icm/releases) section.
 
 See the [`completion` command](docs/icm_completion.md) for **bash**, **zsh**, **fish** and **powershell** completions.
 
@@ -109,4 +109,4 @@ See the [`doc` command](docs/icm_doc.md) for **manual pages** and **markdown**.
 
 ## License
 
-icm is released under the MIT license. See [LICENSE](https://github.com/meyermarcel/icm/blob/master/LICENSE)
+icm is released under the MIT license. See [LICENSE](https://github.com/mrclmr/icm/blob/master/LICENSE)

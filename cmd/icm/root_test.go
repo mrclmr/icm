@@ -1,6 +1,6 @@
 package cmd
 
-import "github.com/meyermarcel/icm/cont"
+import "github.com/mrclmr/icm/cont"
 
 type dummyOwnerDecodeUpdater struct {
 	dummyOwnerDecoder

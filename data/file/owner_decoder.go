@@ -9,7 +9,7 @@ import (
 	// Needed for package embed.
 	_ "embed"
 
-	"github.com/meyermarcel/icm/cont"
+	"github.com/mrclmr/icm/cont"
 )
 
 const (
