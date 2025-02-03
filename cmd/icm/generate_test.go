@@ -5,7 +5,7 @@ import (
 	"math/rand/v2"
 	"testing"
 
-	"github.com/meyermarcel/icm/configs"
+	"github.com/mrclmr/icm/configs"
 )
 
 func Test_generateCmd(t *testing.T) {

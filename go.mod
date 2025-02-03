@@ -1,11 +1,11 @@
-module github.com/meyermarcel/icm
+module github.com/mrclmr/icm
 
 go 1.23
 
 require (
 	github.com/logrusorgru/aurora/v4 v4.0.0
 	github.com/mattn/go-isatty v0.0.20
-	github.com/meyermarcel/annot v0.4.0
+	github.com/mrclmr/annot v0.5.0
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	golang.org/x/net v0.27.0

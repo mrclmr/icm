@@ -13,8 +13,8 @@ github.com/logrusorgru/aurora/v4 v4.0.0 h1:sRjfPpun/63iADiSvGGjgA1cAYegEWMPCJdUp
 github.com/logrusorgru/aurora/v4 v4.0.0/go.mod h1:lP0iIa2nrnT/qoFXcOZSrZQpJ1o6n2CUf/hyHi2Q4ZQ=
 github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
 github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
-github.com/meyermarcel/annot v0.4.0 h1:46q70tpKqS6GmrMn03Mrnh7unHPZCQvQAdYtleu8geI=
-github.com/meyermarcel/annot v0.4.0/go.mod h1:NddTDU7dsaGD8esVzYD3oQeYrReJODr0NZVXJuDsZNI=
+github.com/mrclmr/annot v0.4.0 h1:46q70tpKqS6GmrMn03Mrnh7unHPZCQvQAdYtleu8geI=
+github.com/mrclmr/annot v0.4.0/go.mod h1:NddTDU7dsaGD8esVzYD3oQeYrReJODr0NZVXJuDsZNI=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/rivo/uniseg v0.4.7 h1:WUdvkW8uEhrYfLC4ZzdpI2ztxP1I582+49Oc5Mq64VQ=

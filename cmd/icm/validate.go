@@ -14,10 +14,10 @@ import (
 
 	"github.com/logrusorgru/aurora/v4"
 	"github.com/mattn/go-isatty"
-	"github.com/meyermarcel/icm/configs"
-	"github.com/meyermarcel/icm/cont"
-	"github.com/meyermarcel/icm/data"
-	"github.com/meyermarcel/icm/input"
+	"github.com/mrclmr/icm/configs"
+	"github.com/mrclmr/icm/cont"
+	"github.com/mrclmr/icm/data"
+	"github.com/mrclmr/icm/input"
 	"github.com/spf13/cobra"
 )
 

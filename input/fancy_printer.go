@@ -9,7 +9,7 @@ import (
 
 	"github.com/logrusorgru/aurora/v4"
 	"github.com/mattn/go-isatty"
-	"github.com/meyermarcel/annot"
+	"github.com/mrclmr/annot"
 )
 
 var au *aurora.Aurora

@@ -9,10 +9,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/meyermarcel/icm/configs"
-	"github.com/meyermarcel/icm/data"
-	"github.com/meyermarcel/icm/data/file"
-	"github.com/meyermarcel/icm/http"
+	"github.com/mrclmr/icm/configs"
+	"github.com/mrclmr/icm/data"
+	"github.com/mrclmr/icm/data/file"
+	"github.com/mrclmr/icm/http"
 
 	"github.com/spf13/cobra"
 )
@@ -142,7 +142,7 @@ func newRootCmd(
 	rootCmd.SetHelpTemplate(`{{with (or .Long .Short)}}{{. | trimTrailingWhitespaces}}
 
 {{end}}{{if or .Runnable .HasSubCommands}}{{.UsageString}}{{end}}
-Visit github.com/meyermarcel/icm for more docs, issues, pull requests and feedback.
+Visit github.com/mrclmr/icm for more docs, issues, pull requests and feedback.
 `)
 
 	r := rand.New(rand.NewPCG(rand.Uint64(), rand.Uint64()))

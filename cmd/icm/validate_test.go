@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/meyermarcel/icm/configs"
+	"github.com/mrclmr/icm/configs"
 )
 
 func Test_singleLine(t *testing.T) {
