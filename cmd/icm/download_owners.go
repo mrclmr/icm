@@ -3,6 +3,7 @@ package cmd
 import (
 	"os"
 	"path"
+	"path/filepath"
 
 	"github.com/mrclmr/icm/data"
 	"github.com/mrclmr/icm/http"
@@ -10,11 +11,16 @@ import (
 )
 
 type filePathValue struct {
-	value string
+	homeDir   string
+	ownerPath string
 }
 
 func (v *filePathValue) String() string {
-	return v.value
+	return filepath.Join("$HOME", v.ownerPath)
+}
+
+func (v *filePathValue) Path() string {
+	return filepath.Join(v.homeDir, v.ownerPath)
 }
 
 func (v *filePathValue) Set(value string) error {
@@ -25,7 +31,8 @@ func (v *filePathValue) Set(value string) error {
 			return err
 		}
 	}
-	v.value = value
+	v.homeDir = ""
+	v.ownerPath = value
 	return nil
 }
 
@@ -37,9 +44,13 @@ func newDownloadOwnersCmd(
 	writeOwnersCSVFunc data.WriteOwnersCSVFunc,
 	timestampUpdater data.TimestampUpdater,
 	ownersDownloader http.OwnersDownloader,
+	homeDir string,
 	ownerCSVPath string,
 ) (*cobra.Command, error) {
-	filePath := filePathValue{value: ownerCSVPath}
+	filePath := filePathValue{
+		homeDir:   homeDir,
+		ownerPath: ownerCSVPath,
+	}
 
 	downloadOwnersCmd := &cobra.Command{
 		Aliases: []string{"update"},
@@ -61,7 +72,7 @@ echo 'AAA;my company;my city;my country' >> $HOME/.icm/data/custom-owner.csv`,
 		Args:              cobra.NoArgs,
 		ValidArgsFunction: cobra.NoFileCompletions,
 		RunE: func(_ *cobra.Command, _ []string) error {
-			return overwriteOwnersFile(writeOwnersCSVFunc, timestampUpdater, ownersDownloader, filePath.value)
+			return overwriteOwnersFile(writeOwnersCSVFunc, timestampUpdater, ownersDownloader, filePath.Path())
 		},
 	}
 	downloadOwnersCmd.Flags().VarP(&filePath, "output", "o", "output file")

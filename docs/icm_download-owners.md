@@ -31,7 +31,7 @@ echo 'AAA;my company;my city;my country' >> $HOME/.icm/data/custom-owner.csv
 
 ```
   -h, --help            help for download-owners
-  -o, --output string   output file (default "/Users/mrclmr/.icm/data/owner.csv")
+  -o, --output string   output file (default "$HOME/.icm/data/owner.csv")
 ```
 
 ### SEE ALSO

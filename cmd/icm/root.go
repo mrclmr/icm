@@ -30,9 +30,11 @@ type sizeTypeDecoders struct {
 }
 
 const (
-	appName  = "icm"
-	appDir   = "." + appName
-	ownerURL = "https://www.bic-code.org/search/bic-codes/country/all/results/17576"
+	appName        = "icm"
+	appDir         = "." + appName
+	ownerURL       = "https://www.bic-code.org/search/bic-codes/country/all/results/17576"
+	ownerCSV       = "owner.csv"
+	customOwnerCSV = "custom-owner.csv"
 )
 
 var sepHelp = `Configuration for separators is generated first time you
@@ -66,8 +68,8 @@ func Execute(version string) {
 	appDirDataPath, err := initDir(filepath.Join(appDirPath, "data"))
 	checkErr(stderr, err)
 
-	ownerCSVPath := filepath.Join(appDirDataPath, "owner.csv")
-	ownerDecoder, err := file.NewOwnerDecoder(ownerCSVPath, filepath.Join(appDirDataPath, "custom-owner.csv"))
+	ownerCSVPath := filepath.Join(appDirDataPath, ownerCSV)
+	ownerDecoder, err := file.NewOwnerDecoder(ownerCSVPath, filepath.Join(customOwnerCSV))
 	checkErr(stderr, err)
 
 	equipCatDecoder, err := file.NewEquipCatDecoder(appDirDataPath)
@@ -103,7 +105,9 @@ func Execute(version string) {
 		file.WriteOwnersCSV,
 		downloader,
 		timestampUpdater,
-		ownerCSVPath)
+		homeDir,
+		filepath.Join(appDir, "data", ownerCSV),
+	)
 	checkErr(stderr, err)
 
 	errCmd := rootCmd.Execute()
@@ -127,6 +131,7 @@ func newRootCmd(
 	ownerCreator data.WriteOwnersCSVFunc,
 	ownersDownloader http.OwnersDownloader,
 	timestampUpdater data.TimestampUpdater,
+	homeDir string,
 	ownerCSVPath string,
 ) (*cobra.Command, error) {
 	rootCmd := &cobra.Command{
@@ -153,7 +158,7 @@ Visit github.com/mrclmr/icm for more docs, issues, pull requests and feedback.
 		return nil, err
 	}
 	rootCmd.AddCommand(cmd)
-	downloadOwnersCmd, err := newDownloadOwnersCmd(ownerCreator, timestampUpdater, ownersDownloader, ownerCSVPath)
+	downloadOwnersCmd, err := newDownloadOwnersCmd(ownerCreator, timestampUpdater, ownersDownloader, homeDir, ownerCSVPath)
 	if err != nil {
 		return nil, err
 	}
