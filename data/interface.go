@@ -13,6 +13,7 @@ type OwnerDecoder interface {
 	GetAllOwnerCodes() []string
 }
 
+// WriteOwnersCSVFunc represents a function that writes owners to an io.Writer.
 type WriteOwnersCSVFunc func(newOwners []cont.Owner, out io.Writer) error
 
 // EquipCatDecoder decodes an ID to an equipment category.

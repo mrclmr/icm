@@ -12,8 +12,8 @@ func TestInputHasCorrectValue(t *testing.T) {
 			matchIndex: func(_ string) []int {
 				return []int{0, 1}
 			},
-			validate: func(_ string, _ []string) (error, []string, []Datum) {
-				return nil, []string{"match 1"}, nil
+			validate: func(_ string, _ []string) ([]string, []Datum, error) {
+				return []string{"match 1"}, nil, nil
 			},
 		}
 	}
@@ -24,8 +24,8 @@ func TestInputHasCorrectValue(t *testing.T) {
 			matchIndex: func(_ string) []int {
 				return []int{0, 2}
 			},
-			validate: func(_ string, _ []string) (error, []string, []Datum) {
-				return nil, []string{"match 2"}, nil
+			validate: func(_ string, _ []string) ([]string, []Datum, error) {
+				return []string{"match 2"}, nil, nil
 			},
 		}
 	}
@@ -35,8 +35,8 @@ func TestInputHasCorrectValue(t *testing.T) {
 			matchIndex: func(_ string) []int {
 				return []int{0, 1}
 			},
-			validate: func(_ string, _ []string) (error, []string, []Datum) {
-				return errors.New(""), nil, nil
+			validate: func(_ string, _ []string) ([]string, []Datum, error) {
+				return nil, nil, errors.New("")
 			},
 		}
 	}

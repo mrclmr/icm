@@ -21,6 +21,7 @@ const groupFileName = "group.json"
 //go:embed group.json
 var groupJSON []byte
 
+// TypeAndGroupDecoder holds types and groups for decoding.
 type TypeAndGroupDecoder struct {
 	types  map[string]string
 	groups map[string]string

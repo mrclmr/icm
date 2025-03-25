@@ -14,10 +14,12 @@ type ownersDownloader struct {
 	ownerURL string
 }
 
+// NewOwnersDownloader returns a new OwnersDownloader.
 func NewOwnersDownloader(ownerURL string) OwnersDownloader {
 	return &ownersDownloader{ownerURL: ownerURL}
 }
 
+// OwnersDownloader downloads owners.
 type OwnersDownloader interface {
 	Download() ([]cont.Owner, error)
 }

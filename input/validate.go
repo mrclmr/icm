@@ -40,7 +40,7 @@ func Validate(in string, newInputs []func() Input) ([]Input, error) {
 type Input struct {
 	runeCount      int
 	matchIndex     func(in string) []int
-	validate       func(value string, previousValues []string) (error, []string, []Datum)
+	validate       func(value string, previousValues []string) ([]string, []Datum, error)
 	toUpper        bool
 	value          string
 	previousValues []string
@@ -57,13 +57,13 @@ func (i *Input) SetToUpper() {
 // NewInput returns a new Input.
 func NewInput(runeCount int,
 	matchIndex func(in string) []int,
-	validate func(value string, previousValues []string) (error, []string, []Datum),
+	validate func(value string, previousValues []string) ([]string, []Datum, error),
 ) Input {
 	return Input{runeCount: runeCount, matchIndex: matchIndex, validate: validate}
 }
 
 func (i *Input) validateValue() {
-	i.err, i.lines, i.data = i.validate(i.value, i.previousValues)
+	i.lines, i.data, i.err = i.validate(i.value, i.previousValues)
 }
 
 func (i *Input) isValidFmt() bool {

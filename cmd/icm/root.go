@@ -45,6 +45,7 @@ Edit default configuration for customization:
 
   ` + filepath.Join("$HOME", appDir, configs.ConfigNameWithYmlExt)
 
+// Execute executes the programm.
 func Execute(version string) {
 	stderr := os.Stderr
 

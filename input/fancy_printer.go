@@ -56,7 +56,7 @@ func (fp *FancyPrinter) Print(inputs []Input) error {
 	}
 
 	b := &strings.Builder{}
-	b.WriteString(fmt.Sprintln())
+	_, _ = fmt.Fprintln(b)
 
 	b.WriteString(fp.indent)
 	pos := len(fp.indent)
@@ -94,14 +94,14 @@ func (fp *FancyPrinter) Print(inputs []Input) error {
 		valid = valid && input.err == nil
 	}
 	b.WriteString(fmtCheckMark(valid))
-	b.WriteString(fmt.Sprintln())
+	_, _ = fmt.Fprintln(b)
 	err := annot.Write(b, annots...)
 	if err != nil {
 		return err
 	}
-	b.WriteString(fmt.Sprintln())
-
+	_, _ = fmt.Fprintln(b)
 	_, _ = io.WriteString(fp.writer, b.String())
+
 	return nil
 }
 

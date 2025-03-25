@@ -8,10 +8,12 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// Config represents the configuration.
 type Config struct {
 	Map map[string]string
 }
 
+// Overwrite overwrites the configuration with command line flags.
 func (c *Config) Overwrite(flagSet *pflag.FlagSet) {
 	for k := range map[string]bool{
 		FlagNames.Pattern:  true,
@@ -38,35 +40,43 @@ func (c *Config) Overwrite(flagSet *pflag.FlagSet) {
 	}
 }
 
+// Pattern returns the pattern config.
 func (c *Config) Pattern() string {
 	return c.Map[FlagNames.Pattern]
 }
 
+// NoHeader returns header config.
 func (c *Config) NoHeader() bool {
 	value, _ := strconv.ParseBool(c.Map[FlagNames.NoHeader])
 	return value
 }
 
+// Output returns output config.
 func (c *Config) Output() string {
 	return c.Map[FlagNames.Output]
 }
 
+// SepOE returns the separator between owner and equipment category.
 func (c *Config) SepOE() string {
 	return c.Map[FlagNames.SepOE]
 }
 
+// SepES returns the separator between equipment category and serial number.
 func (c *Config) SepES() string {
 	return c.Map[FlagNames.SepES]
 }
 
+// SepSC returns the separator between serial number and check digit.
 func (c *Config) SepSC() string {
 	return c.Map[FlagNames.SepSC]
 }
 
+// SepCS returns the separator between check digit and size.
 func (c *Config) SepCS() string {
 	return c.Map[FlagNames.SepCS]
 }
 
+// SepST returns the separator between size and type.
 func (c *Config) SepST() string {
 	return c.Map[FlagNames.SepST]
 }

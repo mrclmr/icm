@@ -55,6 +55,7 @@ func NewSizeDecoder(path string) (*LengthDecoder, *HeightWidthDecoder, error) {
 	return &LengthDecoder{s.Length}, &HeightWidthDecoder{s.HeightWidth}, nil
 }
 
+// LengthDecoder holds the lengths for decoding.
 type LengthDecoder struct {
 	lengths map[string]string
 }
@@ -67,6 +68,7 @@ func (ld *LengthDecoder) Decode(code string) (bool, cont.Length) {
 	return false, ""
 }
 
+// HeightWidthDecoder holds height and widths for decoding.
 type HeightWidthDecoder struct {
 	heightWidths map[string]heightWidth
 }

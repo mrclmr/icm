@@ -15,6 +15,7 @@ const (
 	lastUpdate         = "2018-10-29T15:00:00Z" + "\n"
 )
 
+// TimestampUpdater updates the timestamp since the last update.
 type TimestampUpdater struct {
 	path      string
 	timestamp string

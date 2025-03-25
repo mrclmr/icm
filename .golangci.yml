@@ -1,7 +1,15 @@
+version: "2"
 linters:
   enable:
-    - revive
-    - gofumpt
+    - errname
     - errorlint
     - godot
-    - errname
+    - revive
+  settings:
+    revive:
+      rules:
+        - name: package-comments
+          disabled: true
+formatters:
+  enable:
+    - gofumpt

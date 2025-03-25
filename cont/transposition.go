@@ -2,6 +2,7 @@ package cont
 
 import "math"
 
+// TpNumber represents a transposed serial number.
 type TpNumber struct {
 	Number
 	// Pos is the position of the two transposed numbers starting with 0.
