@@ -52,20 +52,19 @@ func parseOwners(body io.Reader) ([]cont.Owner, error) {
 
 	var owners []cont.Owner
 
-	var appendOwners func(*html.Node) error
+	for desc := range doc.Descendants() {
 
-	appendOwners = func(n *html.Node) error {
-		tbody := tableBody(n)
+		tbody := tableBody(desc)
 
 		if tbody != nil {
 		Rows:
-			for child1 := tbody.FirstChild; child1 != nil; child1 = child1.NextSibling {
+			for child1 := range tbody.ChildNodes() {
 				tr := tableRow(child1)
 				if tr != nil {
 					tdIdx := 0
 					var owner cont.Owner
 
-					for child2 := tr.FirstChild; child2 != nil; child2 = child2.NextSibling {
+					for child2 := range tr.ChildNodes() {
 						td := tableData(child2)
 						if td != nil {
 
@@ -101,20 +100,8 @@ func parseOwners(body io.Reader) ([]cont.Owner, error) {
 				}
 			}
 		}
-
-		for c := n.FirstChild; c != nil; c = c.NextSibling {
-			err = appendOwners(c)
-			if err != nil {
-				return err
-			}
-		}
-		return nil
 	}
 
-	err = appendOwners(doc)
-	if err != nil {
-		return nil, err
-	}
 	if len(owners) == 0 {
 		return nil, fmt.Errorf("parsing HTML failed because no owner was parsed")
 	}
