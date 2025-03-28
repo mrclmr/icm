@@ -61,7 +61,7 @@ func TestCalcCheckDigit(t *testing.T) {
 }
 
 func BenchmarkCalcCheckDigit(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		CalcCheckDigit("CSQ", 'U', 305438)
 	}
 }
