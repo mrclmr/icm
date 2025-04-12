@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"maps"
 	"os"
 	// Needed for package embed.
 	_ "embed"
@@ -55,9 +56,7 @@ func NewOwnerDecoder(remoteOwnersPath, customOwnersPath string) (*OwnerDecoder, 
 			return nil, err
 		}
 
-		for k, v := range customOwnersMap {
-			ownersMap[k] = v
-		}
+		maps.Copy(ownersMap, customOwnersMap)
 	}
 
 	decoder.owners = ownersMap

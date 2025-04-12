@@ -94,7 +94,7 @@ func TestCheckTransposition(t *testing.T) {
 }
 
 func BenchmarkCalcCheckTransposition(b *testing.B) {
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		CheckTransposition("APL", 'U', 689473, 10)
 	}
 }
