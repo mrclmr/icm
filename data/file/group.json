@@ -1,13 +1,14 @@
 {
   "A": "Air/surface container",
-  "B": "Bulk container",
-  "G": "General purpose container",
-  "H": "Insulated container",
-  "N": "Pressurized and non-pressurized tank container (dry)",
-  "P": "Flat",
+  "B": "Dry bulk cargo non-pressurised, box type",
+  "G": "General purpose container without ventilation",
+  "H": "Thermal container",
+  "K": "Pressurised tank container (liquids and gases)",
+  "N": "Pressurised and non-pressurised tank container (dry)",
+  "P": "Platform (container)",
   "R": "Thermal container",
-  "S": "Named cargo container",
-  "T": "Tank container",
-  "U": "Open-top/hardtop container",
-  "V": "Ventilated container"
+  "S": "Named cargoes and non-cargo carrying container",
+  "U": "Open-top container",
+  "V": "General purpose container with ventilation",
+  "W": "Foldable general purpose container"
 }
