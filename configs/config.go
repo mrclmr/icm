@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/goccy/go-yaml"
 	"github.com/spf13/pflag"
-	"gopkg.in/yaml.v3"
 )
 
 // Config represents the configuration.
