@@ -74,12 +74,11 @@ func TestConfig_OverwriteBool(t *testing.T) {
 		},
 	}
 	set := &pflag.FlagSet{}
-	want := true
 	set.Bool(FlagNames.NoHeader, DefaultValues.NoHeader, "")
-	_ = set.Set(FlagNames.NoHeader, fmt.Sprintf("%t", want))
+	_ = set.Set(FlagNames.NoHeader, "true")
 
 	c.Overwrite(set)
-	if c.NoHeader() != want {
-		t.Errorf("ReadConfig() got = %v, want %v", c.NoHeader(), want)
+	if !c.NoHeader() {
+		t.Fatalf("ReadConfig() got = %v, want true", c.NoHeader())
 	}
 }
