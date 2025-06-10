@@ -2,14 +2,6 @@
 SHELL := bash
 .ONESHELL:
 
-BIN_DIR := $(GOPATH)/bin
-BUILD_DIR := build
-# man-pages is also defined in goreleaser.yml
-MAN_DIR := man-pages
-DOCS_DIR := docs
-MARKDOWN_FILES := $(DOCS_DIR)/*.md
-BINARY := icm
-
 .PHONY: all
 all: test lint build markdown
 
@@ -29,12 +21,12 @@ lint: dummy-csv
 
 .PHONY: build
 build: dummy-csv
-	export CGO_ENABLED=0; go build -o $(BUILD_DIR)/$(BINARY)
+	export CGO_ENABLED=0; go build
 
 .PHONY: markdown
 markdown: build
-	rm $(MARKDOWN_FILES)
-	./$(BUILD_DIR)/$(BINARY) doc markdown $(DOCS_DIR)
+	rm docs/*.md
+	./icm doc markdown docs
 
 # Individual commands
 
@@ -49,17 +41,18 @@ format:
 
 .PHONY: download-owners
 download-owners: build
-	./$(BUILD_DIR)/$(BINARY) download-owners -o data/file/owner.csv
+	./icm download-owners -o data/file/owner.csv
 
-.PHONY: man-page
-man-page: build
-	./$(BUILD_DIR)/$(BINARY) doc man $(DOCS_DIR)/$(MAN_DIR)/man1
+# man-pages is also defined in goreleaser.yml
+.PHONY: man-pages
+man-pages: build
+	mkdir -p man-pages
+	./icm doc man man-pages
 
-.PHONY: install
-install: build
-	cp $(BUILD_DIR)/$(BINARY) $(BIN_DIR)/$(BINARY)
+.PHONY: completions
+completions: build
+	mkdir -p completions
+	./icm completion bash > completions/icm.bash
+	./icm completion zsh > completions/icm.zsh
+	./icm completion fish > completions/icm.fish
 
-.PHONY: clean
-clean:
-	go clean -x -testcache
-	rm -rf $(BUILD_DIR)

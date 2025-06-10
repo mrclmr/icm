@@ -15,13 +15,13 @@ See examples for [`generate` command](docs/icm_generate.md#examples) and [`valid
 ### macOS with [Homebrew](https://brew.sh)
 
 ```
-brew install mrclmr/tap/icm
+brew install --cask mrclmr/tap/icm
 ```
 
 ### Linux with [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux)
 
 ```
-brew install mrclmr/tap/icm
+brew install --cask mrclmr/tap/icm
 ```
 
 ### Windows with [Scoop](https://scoop.sh)
