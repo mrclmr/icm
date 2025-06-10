@@ -21,15 +21,11 @@ jobs:
         with:
           go-version-file: 'go.mod'
 
-      - name: Generate manpage and download owners CSV
-        # download-owners must be the last executed target if not dummy CSV will be embedded instead.
-        run: make man-page download-owners
-
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
           version: latest
-          args: release --clean
+          args: release --clean --fail-fast
         env:
           # https://github.com/goreleaser/goreleaser/issues/982
           GITHUB_TOKEN: ${{ secrets.GORELEASER_GITHUB_TOKEN }}

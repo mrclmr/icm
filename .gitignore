@@ -1,10 +1,9 @@
-# Build binaries by Makefile
-build/
+icm
 # Build binaries by Goreleaser
 dist/
 
 # Test binary, build with `go test -c`
 *.test
 
-# Generated manual pages
-docs/man-pages/
+man-pages/
+completions/

@@ -1,33 +1,34 @@
 version: 2
 
-builds:
-  -
-    env:
-    - CGO_ENABLED=0
-    goos:
-    - linux
-    - darwin
-    - windows
-    goarch:
-    - '386'
-    - amd64
-    - arm
-    - arm64
-    goarm:
-    - '6'
-    - '7'
-    ignore:
-    - goos: darwin
-      goarch: '386'
-    - goos: darwin
-      goarch: arm
+before:
+  hooks:
+    # Generate manpage, completions and download owners CSV
+    # download-owners must be the last executed target if not dummy CSV will be embedded instead.
+    - make man-pages completions download-owners
 
-checksum:
-  name_template: '{{ .ProjectName }}_checksums.txt'
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - '386'
+      - amd64
+      - arm
+      - arm64
+    goarm:
+      - '6'
+      - '7'
+    ignore:
+      - goos: darwin
+        goarch: '386'
+      - goos: darwin
+        goarch: arm
 
 archives:
-  -
-    name_template: >-
+  - name_template: >-
       {{- .ProjectName }}_
       {{- if eq .Os "darwin" }}Darwin
       {{- else if eq .Os "linux" }}Linux
@@ -38,50 +39,47 @@ archives:
       {{- else }}{{ .Arch }}{{ end }}
       {{- if .Arm }}v{{ .Arm }}{{ end -}}
     format_overrides:
-    - goos: windows
-      formats:
-        - zip
+      - goos: windows
+        formats:
+          - zip
     files:
-    - LICENSE
-    - README.md
-    - docs/*.md
-      # man-pages is also defined in Makefile
-    - docs/man-pages/man1/*
+      - LICENSE
+      - README.md
+      - docs/*.md
+      - man-pages/*
+      - completions/*
 
-brews:
-  -
-    repository:
+# Goreleaser example:
+# https://github.com/goreleaser/goreleaser/tree/main/.goreleaser.yaml
+# https://github.com/goreleaser/goreleaser/tree/main/scripts
+# https://github.com/goreleaser/goreleaser/blob/main/cmd/man.go
+homebrew_casks:
+  - repository:
       owner: mrclmr
       name: homebrew-tap
-    directory: Formula
+    directory: Casks
     description: "Generate or validate intermodal container markings."
     homepage: "https://github.com/mrclmr/icm"
-    install: |
-      bin.install "icm"
-
-      # Install bash completion
-      bash_output = Utils.popen_read("#{bin}/icm completion bash")
-      (bash_completion/"icm").write bash_output
-
-      # Install zsh completion
-      zsh_output = Utils.popen_read("#{bin}/icm completion zsh")
-      (zsh_completion/"_icm").write zsh_output
-
-      # Install fish completion
-      fish_output = Utils.popen_read("#{bin}/icm completion fish")
-      (fish_completion/"icm.fish").write fish_output
-
-      # man-pages is also defined in Makefile
-      man1.install Dir["docs/man-pages/man1/*.1"]
-
-    test: |
-      system "#{bin}/icm --version"
+    conflicts:
+      - formula: icm
+    manpages:
+      - 'man-pages/icm.1'
+      - 'man-pages/icm-download-owners.1'
+      - 'man-pages/icm-generate.1'
+      - 'man-pages/icm-validate.1'
+    completions:
+      bash: 'completions/icm.bash'
+      zsh: 'completions/icm.zsh'
+      fish: 'completions/icm.fish'
+    hooks:
+      post:
+        install: |
+          system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/icm"]
 
 scoops:
-  -
-    repository:
+  - repository:
       owner: mrclmr
       name: scoop-bucket
-    homepage: "https://github.com/mrclmr/icm"
     description: "Generate or validate intermodal container markings."
-    license: MIT
+    homepage: "https://github.com/mrclmr/icm"
+    license: 'MIT'
