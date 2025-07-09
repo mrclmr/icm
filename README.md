@@ -31,44 +31,14 @@ scoop bucket add mrclmr-bucket https://github.com/mrclmr/scoop-bucket.git
 scoop install icm
 ```
 
-### Manual
+### Download binary
 
-Download your binary in the [Releases](https://github.com/mrclmr/icm/releases) section.
+See binaries in the [Releases](https://github.com/mrclmr/icm/releases) section.
 
-See the [`completion` command](docs/icm_completion.md) for **bash**, **zsh**, **fish** and **powershell** completions.
-
-See the [`doc` command](docs/icm_doc.md) for **manual pages** and **markdown**.
-
-## Contribution
-
-1. Fork it
-
-2. Download your fork
-    ```
-    git clone https://github.com/github_username/icm && cd icm
-    ```
-
-3. Create your feature branch
-    ```
-    git checkout -b my-new-feature
-    ```
-
-4. Make changes and add them
-    ```
-    git add .
-    ```
-
-5. Commit your changes
-    ```
-    git commit -m 'Add some feature'
-    ```
-
-6. Push to the branch
-    ```
-    git push origin my-new-feature
-    ```
-
-7. Create new pull request
+Find help how to generate shell completion and man pages:
+```
+icm completion -h && icm doc man -h
+```
 
 ## Development
 
@@ -80,13 +50,6 @@ See the [`doc` command](docs/icm_doc.md) for **manual pages** and **markdown**.
 2. To build project execute
     ```
     make
-    ```
-
-    ---
-    See all available `make` targets
-
-    ```
-    make <TAB> <TAB>
     ```
 
 ## Release
