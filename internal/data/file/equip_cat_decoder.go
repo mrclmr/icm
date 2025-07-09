@@ -1,14 +1,12 @@
 package file
 
 import (
+	_ "embed"
 	"encoding/json"
 	"os"
 	"path/filepath"
 
-	// Needed for package embed.
-	_ "embed"
-
-	"github.com/mrclmr/icm/cont"
+	"github.com/mrclmr/icm/internal/cont"
 )
 
 const equipCatIDsFileName = "equipment-category-id.json"

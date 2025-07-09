@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mrclmr/icm/cont"
+	"github.com/mrclmr/icm/internal/cont"
 )
 
 func Test_parseOwners(t *testing.T) {

@@ -12,12 +12,13 @@ import (
 	"strings"
 	"unicode/utf8"
 
+	"github.com/mrclmr/icm/internal/configs"
+	"github.com/mrclmr/icm/internal/cont"
+	"github.com/mrclmr/icm/internal/data"
+	"github.com/mrclmr/icm/internal/input"
+
 	"github.com/logrusorgru/aurora/v4"
 	"github.com/mattn/go-isatty"
-	"github.com/mrclmr/icm/configs"
-	"github.com/mrclmr/icm/cont"
-	"github.com/mrclmr/icm/data"
-	"github.com/mrclmr/icm/input"
 	"github.com/spf13/cobra"
 )
 

@@ -6,7 +6,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/mrclmr/icm/cont"
+	"github.com/mrclmr/icm/internal/cont"
+
 	"golang.org/x/net/html"
 )
 

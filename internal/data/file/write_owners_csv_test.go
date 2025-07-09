@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/mrclmr/icm/cont"
+	"github.com/mrclmr/icm/internal/cont"
 )
 
 func TestWriteOwnersCSV(t *testing.T) {

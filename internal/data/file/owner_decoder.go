@@ -1,16 +1,15 @@
 package file
 
 import (
+	_ "embed"
 	"encoding/csv"
 	"errors"
 	"fmt"
 	"io"
 	"maps"
 	"os"
-	// Needed for package embed.
-	_ "embed"
 
-	"github.com/mrclmr/icm/cont"
+	"github.com/mrclmr/icm/internal/cont"
 )
 
 const (

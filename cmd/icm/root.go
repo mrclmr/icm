@@ -9,10 +9,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/mrclmr/icm/configs"
-	"github.com/mrclmr/icm/data"
-	"github.com/mrclmr/icm/data/file"
-	"github.com/mrclmr/icm/http"
+	"github.com/mrclmr/icm/internal/configs"
+	"github.com/mrclmr/icm/internal/data"
+	"github.com/mrclmr/icm/internal/data/file"
+	"github.com/mrclmr/icm/internal/http"
 
 	"github.com/spf13/cobra"
 )

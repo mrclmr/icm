@@ -7,7 +7,7 @@ all: test lint build markdown
 
 .PHONY: dummy-csv
 dummy-csv:
-	@echo 'AAA;my company;my city;my country' > data/file/owner.csv
+	@echo 'AAA;my company;my city;my country' > internal/data/file/owner.csv
 
 .PHONY: test
 test: dummy-csv
@@ -41,7 +41,7 @@ format:
 
 .PHONY: download-owners
 download-owners: build
-	./icm download-owners -o data/file/owner.csv
+	./icm download-owners -o internal/data/file/owner.csv
 
 # man-pages is also defined in goreleaser.yml
 .PHONY: man-pages
