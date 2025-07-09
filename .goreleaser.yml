@@ -63,6 +63,7 @@ homebrew_casks:
     conflicts:
       - formula: icm
     manpages:
+      # This list is unfortunately manually maintained.
       - 'man-pages/icm.1'
       - 'man-pages/icm-download-owners.1'
       - 'man-pages/icm-generate.1'
