@@ -37,7 +37,7 @@ audit:
 
 .PHONY: format
 format:
-	gofumpt -l -w .
+	golangci-lint fmt
 
 .PHONY: download-owners
 download-owners: build
