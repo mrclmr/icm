@@ -26,7 +26,7 @@ build: dummy-csv
 .PHONY: markdown
 markdown: build
 	rm docs/*.md
-	./icm doc markdown docs
+	./icm doc markdown docs/
 
 # Individual commands
 
