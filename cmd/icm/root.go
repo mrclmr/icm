@@ -130,7 +130,7 @@ func newRootCmd(
 	config *configs.Config,
 	decoders decoders,
 	ownerCreator data.WriteOwnersCSVFunc,
-	ownersDownloader http.OwnersDownloader,
+	ownersGetter http.OwnersGetter,
 	timestampUpdater data.TimestampUpdater,
 	homeDir string,
 	ownerCSVPath string,
@@ -162,7 +162,7 @@ Visit github.com/mrclmr/icm for more docs, issues, pull requests and feedback.
 		return nil, err
 	}
 	rootCmd.AddCommand(cmd)
-	downloadOwnersCmd, err := newDownloadOwnersCmd(ownerCreator, timestampUpdater, ownersDownloader, homeDir, ownerCSVPath)
+	downloadOwnersCmd, err := newDownloadOwnersCmd(ownerCreator, timestampUpdater, ownersGetter, homeDir, ownerCSVPath)
 	if err != nil {
 		return nil, err
 	}

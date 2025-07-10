@@ -7,27 +7,21 @@ import (
 	"net/http"
 
 	"golang.org/x/net/context"
+	"golang.org/x/net/html"
 
 	"github.com/mrclmr/icm/internal/cont"
-
-	"golang.org/x/net/html"
 )
 
-type ownersDownloader struct {
+type OwnersDownloader struct {
 	ownerURL string
 }
 
 // NewOwnersDownloader returns a new OwnersDownloader.
-func NewOwnersDownloader(ownerURL string) OwnersDownloader {
-	return &ownersDownloader{ownerURL: ownerURL}
+func NewOwnersDownloader(ownerURL string) *OwnersDownloader {
+	return &OwnersDownloader{ownerURL: ownerURL}
 }
 
-// OwnersDownloader downloads owners.
-type OwnersDownloader interface {
-	Download(context.Context) ([]cont.Owner, error)
-}
-
-func (od *ownersDownloader) Download(ctx context.Context) ([]cont.Owner, error) {
+func (od *OwnersDownloader) GetOwners(ctx context.Context) ([]cont.Owner, error) {
 	req, err := http.NewRequestWithContext(ctx, "GET", od.ownerURL, nil)
 	if err != nil {
 		return nil, err
