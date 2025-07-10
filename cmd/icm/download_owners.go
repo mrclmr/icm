@@ -5,6 +5,8 @@ import (
 	"path"
 	"path/filepath"
 
+	"golang.org/x/net/context"
+
 	"github.com/mrclmr/icm/internal/data"
 	"github.com/mrclmr/icm/internal/http"
 
@@ -72,8 +74,8 @@ icm download-owners
 echo 'AAA;my company;my city;my country' >> $HOME/.icm/data/custom-owner.csv`,
 		Args:              cobra.NoArgs,
 		ValidArgsFunction: cobra.NoFileCompletions,
-		RunE: func(_ *cobra.Command, _ []string) error {
-			return overwriteOwnersFile(writeOwnersCSVFunc, timestampUpdater, ownersDownloader, filePath.Path())
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			return overwriteOwnersFile(cmd.Context(), writeOwnersCSVFunc, timestampUpdater, ownersDownloader, filePath.Path())
 		},
 	}
 	downloadOwnersCmd.Flags().VarP(&filePath, "output", "o", "output file")
@@ -86,12 +88,12 @@ echo 'AAA;my company;my city;my country' >> $HOME/.icm/data/custom-owner.csv`,
 	return downloadOwnersCmd, nil
 }
 
-func overwriteOwnersFile(writeOwnersCSV data.WriteOwnersCSVFunc, timestampUpdater data.TimestampUpdater, ownersDownloader http.OwnersDownloader, filePath string) error {
+func overwriteOwnersFile(ctx context.Context, writeOwnersCSV data.WriteOwnersCSVFunc, timestampUpdater data.TimestampUpdater, ownersDownloader http.OwnersDownloader, filePath string) error {
 	if err := timestampUpdater.Update(); err != nil {
 		return err
 	}
 
-	owners, err := ownersDownloader.Download()
+	owners, err := ownersDownloader.Download(ctx)
 	if err != nil {
 		return err
 	}

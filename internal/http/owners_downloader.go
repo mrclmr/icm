@@ -6,6 +6,8 @@ import (
 	"io"
 	"net/http"
 
+	"golang.org/x/net/context"
+
 	"github.com/mrclmr/icm/internal/cont"
 
 	"golang.org/x/net/html"
@@ -22,23 +24,27 @@ func NewOwnersDownloader(ownerURL string) OwnersDownloader {
 
 // OwnersDownloader downloads owners.
 type OwnersDownloader interface {
-	Download() ([]cont.Owner, error)
+	Download(context.Context) ([]cont.Owner, error)
 }
 
-func (od *ownersDownloader) Download() ([]cont.Owner, error) {
-	resp, err := http.Get(od.ownerURL)
+func (od *ownersDownloader) Download(ctx context.Context) ([]cont.Owner, error) {
+	req, err := http.NewRequestWithContext(ctx, "GET", od.ownerURL, nil)
 	if err != nil {
 		return nil, err
 	}
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		_ = resp.Body.Close()
+	}()
+
 	if resp.StatusCode != 200 {
 		return nil, fmt.Errorf("status code error: %d %s", resp.StatusCode, resp.Status)
 	}
 	owners, err := parseOwners(resp.Body)
 	if err != nil {
-		return nil, err
-	}
-
-	if err = resp.Body.Close(); err != nil {
 		return nil, err
 	}
 
