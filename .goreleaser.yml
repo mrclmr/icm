@@ -60,8 +60,6 @@ homebrew_casks:
     directory: Casks
     description: "Generate or validate intermodal container markings."
     homepage: "https://github.com/mrclmr/icm"
-    conflicts:
-      - formula: icm
     manpages:
       # This list is unfortunately manually maintained.
       - 'man-pages/icm.1'
