@@ -26,6 +26,12 @@ builds:
         goarch: '386'
       - goos: darwin
         goarch: arm
+      - goos: windows
+        goarch: arm
+        goarm: '6'
+      - goos: windows
+        goarch: arm
+        goarm: '7'
 
 archives:
   - name_template: >-
