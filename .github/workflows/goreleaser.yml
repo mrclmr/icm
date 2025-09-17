@@ -24,7 +24,7 @@ jobs:
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
-          version: latest
+          version: v2
           args: release --clean --fail-fast
         env:
           # https://github.com/goreleaser/goreleaser/issues/982
