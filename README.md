@@ -61,7 +61,7 @@ icm completion -h && icm doc man -h
 
 2. Create version tag according to [SemVer](https://semver.org)
     ```
-    git tag 'x.y.z'
+    git tag 'v0.0.1'
     ```
 
 3. Push tag and let GitHub Actions and Goreleaser do the work
