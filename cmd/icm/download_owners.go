@@ -1,11 +1,10 @@
 package cmd
 
 import (
+	"context"
 	"os"
 	"path"
 	"path/filepath"
-
-	"golang.org/x/net/context"
 
 	"github.com/mrclmr/icm/internal/data"
 	"github.com/mrclmr/icm/internal/http"

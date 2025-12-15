@@ -2,11 +2,11 @@ package http
 
 import (
 	"cmp"
+	"context"
 	"fmt"
 	"io"
 	"net/http"
 
-	"golang.org/x/net/context"
 	"golang.org/x/net/html"
 
 	"github.com/mrclmr/icm/internal/cont"

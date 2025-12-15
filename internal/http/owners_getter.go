@@ -1,8 +1,9 @@
 package http
 
 import (
+	"context"
+
 	"github.com/mrclmr/icm/internal/cont"
-	"golang.org/x/net/context"
 )
 
 // OwnersGetter downloads owners.
