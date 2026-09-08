@@ -49,10 +49,3 @@ man-pages: build
 	mkdir -p man-pages
 	./icm doc man man-pages
 
-.PHONY: completions
-completions: build
-	mkdir -p completions
-	./icm completion bash > completions/icm.bash
-	./icm completion zsh > completions/icm.zsh
-	./icm completion fish > completions/icm.fish
-

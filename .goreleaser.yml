@@ -2,9 +2,9 @@ version: 2
 
 before:
   hooks:
-    # Generate manpage, completions and download owners CSV
+    # Generate manpage and download owners CSV
     # download-owners must be the last executed target if not dummy CSV will be embedded instead.
-    - make man-pages completions download-owners
+    - make man-pages download-owners
 
 builds:
   - env:
@@ -49,7 +49,6 @@ archives:
       - README.md
       - docs/*.md
       - man-pages/*
-      - completions/*
 
 # Goreleaser example:
 # https://github.com/goreleaser/goreleaser/tree/main/.goreleaser.yaml
@@ -68,14 +67,16 @@ homebrew_casks:
       - 'man-pages/icm-download-owners.1'
       - 'man-pages/icm-generate.1'
       - 'man-pages/icm-validate.1'
-    completions:
-      bash: 'completions/icm.bash'
-      zsh: 'completions/icm.zsh'
-      fish: 'completions/icm.fish'
+    generate_completions_from_executable:
+      args:
+        - completion
+      shell_parameter_format: cobra
     hooks:
       post:
         install: |
-          system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/icm"]
+          if OS.mac?
+            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/icm"]
+          end
 
 scoops:
   - repository:
