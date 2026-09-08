@@ -241,7 +241,7 @@ func TestUniqueGenerator(t *testing.T) {
 					t.Errorf("UniqueGenerator.Generate() generated a serial number out of range, %v", number)
 					return
 				}
-				diff += ((lastNum + 1) % 1000000) - (number)
+				diff += ((lastNum + 1) % 1000000) - number
 				lastNum = number
 				cn := g.ContNum()
 				contNumbers[fmt.Sprintf("%s%s%06d%d\n",

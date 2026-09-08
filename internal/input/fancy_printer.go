@@ -120,9 +120,9 @@ func fmtCheckMark(valid bool) string {
 	b.WriteString("  ")
 
 	if !valid {
-		b.WriteString(fmt.Sprint(au.Red("✘")))
+		fmt.Fprint(&b, au.Red("✘"))
 		return b.String()
 	}
-	b.WriteString(fmt.Sprint(au.Green("✔")))
+	fmt.Fprint(&b, au.Green("✔"))
 	return b.String()
 }

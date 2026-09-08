@@ -440,7 +440,7 @@ func equipCatIDsAsList(equipCatDecoder data.EquipCatDecoder) string {
 	iDs := equipCatDecoder.AllCatIDs()
 	slices.Sort(iDs)
 	for i, element := range iDs {
-		b.WriteString(fmt.Sprint(au.Green(element)))
+		fmt.Fprint(&b, au.Green(element))
 		if i < len(iDs)-2 {
 			b.WriteString(", ")
 		}
